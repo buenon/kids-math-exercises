@@ -1,0 +1,19 @@
+.ResultPanel {
+  background-color: #FFFFFF;
+  color: #000000;
+  width: 595px;
+  height: 842px;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  gap: 20px;
+  align-items: center;
+  
+  .Exercises {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    flex-grow: 1;
+    width: 100%;
+  }
+}

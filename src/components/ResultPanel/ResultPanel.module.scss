@@ -1,13 +1,18 @@
 .ResultPanel {
   background-color: #FFFFFF;
   color: #000000;
-  width: 595px;
-  height: 842px;
+  width: 8.3in;
+  height: 11.7in;
   display: flex;
   flex-direction: column;
   padding: 20px;
   gap: 20px;
   align-items: center;
+  
+  .Title {
+    font-size: 2rem;
+    font-weight: bold;
+  }
   
   .Exercises {
     display: flex;

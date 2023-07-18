@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
+import ReactToPrint from "react-to-print";
 import { Config, defaultConfig } from "../../interfaces/config.ts";
 import { ExerciseModel } from "../../interfaces/exerciseModel.ts";
 import { Operation } from "../../interfaces/operation.ts";
@@ -73,6 +74,7 @@ function generateExercises(
 function MathExerciseGenerator() {
   const [exercises, setExercises] = useState<ExerciseModel[]>([]);
   const [config, setConfig] = useState<Config>(defaultConfig);
+  const componentRef = useRef(null);
 
   const handleConfigChange = (config: Config) => {
     setConfig(config);
@@ -92,7 +94,11 @@ function MathExerciseGenerator() {
       <div className={styles.Body}>
         <ConfigPanel onConfigChange={handleConfigChange} />
         <button onClick={handleGenerateExercises}>Generate Exercises</button>
-        <ResultPanel exercises={exercises} />
+        <ReactToPrint
+          trigger={() => <button disabled={!exercises.length}>Print</button>}
+          content={() => componentRef.current}
+        />
+        <ResultPanel exercises={exercises} ref={componentRef} />
       </div>
     </div>
   );

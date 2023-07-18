@@ -7,6 +7,8 @@ import Header from "../Header/Header.tsx";
 import ResultPanel from "../ResultPanel/ResultPanel.tsx";
 import styles from "./MathExerciseGenerator.module.scss";
 
+const EXERCISES_COUNT = 10;
+
 function generateRandomNumber(max: number): number {
   return Math.floor(Math.random() * max) + 1;
 }
@@ -53,14 +55,13 @@ function generateExercise(op: Operation, boundary: number): ExerciseModel {
 
 function generateExercises(
   operation: Operation,
-  count: number,
   boundary: number,
 ): ExerciseModel[] {
   const exercises: Set<string> = new Set();
   const maxAttempts = 100;
   let attempts = 0;
 
-  while (exercises.size < count && attempts < maxAttempts) {
+  while (exercises.size < EXERCISES_COUNT && attempts < maxAttempts) {
     const exercise = JSON.stringify(generateExercise(operation, boundary));
     exercises.add(exercise);
     attempts++;
@@ -78,11 +79,8 @@ function MathExerciseGenerator() {
   };
 
   const handleGenerateExercises = () => {
-    const exerciseCount = config.exerciseCount;
-
     const generatedExercises = generateExercises(
       config.operation,
-      exerciseCount,
       config.boundary,
     );
     setExercises(generatedExercises);

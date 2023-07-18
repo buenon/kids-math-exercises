@@ -89,13 +89,11 @@ function MathExerciseGenerator() {
   return (
     <div className={styles.MathExerciseGenerator}>
       <Header />
-      <div className={styles.Body}></div>
-
-      <ConfigPanel onConfigChange={handleConfigChange} />
-
-      <button onClick={handleGenerateExercises}>Generate Exercises</button>
-
-      <ResultPanel exercises={exercises} />
+      <div className={styles.Body}>
+        <ConfigPanel onConfigChange={handleConfigChange} />
+        <button onClick={handleGenerateExercises}>Generate Exercises</button>
+        <ResultPanel exercises={exercises} />
+      </div>
     </div>
   );
 }
